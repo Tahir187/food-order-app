@@ -24,7 +24,7 @@ const Hero = () => {
 
       <div className="relative">
         <Image
-          src={"/hero-image.png"}
+          src={"/pizza.png"}
           layout={"fill"}
           objectFit={"contain"}
           alt="Biryani image"
