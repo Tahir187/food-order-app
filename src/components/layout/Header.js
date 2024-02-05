@@ -4,7 +4,7 @@ import React from "react";
 const Header = () => {
   return (
     <>
-      <header className="flex items-center justify-between ">
+      <header className="flex items-center justify-between sticky top-0 bg-gray-200 shadow-lg rounded-full pl-4 pr-4 pt-2 pb-2">
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
           <Link
             href="/"
