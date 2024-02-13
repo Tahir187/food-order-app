@@ -2,10 +2,16 @@
 import Link from "next/link";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   const session = useSession();
   const status = session.status;
+  const userData = session.data?.user;
+  let userName = userData?.name || userData?.email;  
+  if(userName && userName.includes(' ')){
+    userName = userName.split(' ')[0];
+  }
 
   return (
     <>
@@ -25,13 +31,19 @@ font-semibold text-2xl"
         </nav>
         <nav className="flex items-center gap-4 text-gray-500 font-semibold">
           {status === "authenticated" && (
-            <button
-              onClick={() => signOut()}
-              className="bg-primary rounded-full
+            <>
+              <Link href={"/profile"} className="flex items-center gap-1 font-semibold">
+                {userName}
+                <CgProfile className="font-bold " />
+              </Link>
+              <button
+                onClick={() => signOut()}
+                className="bg-primary rounded-full
           text-white px-8 py-2"
-            >
-              Logout
-            </button>
+              >
+                Logout
+              </button>
+            </>
           )}
           {status === "unauthenticated" && (
             <>
